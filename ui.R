@@ -19,9 +19,9 @@ ui <- fluidPage(
   
   # Define UI for slider demo app ----
   ui <- fluidPage(
-    table <- "responses", 
+    #table <- "responses", 
     # App title ----
-    titlePanel("Collaboration"),
+    titlePanel("Internal evaluation of the joint project Determinants and effects of cooperation in homogeneous and heterogeneous research clusters (DEKiF)"),
     
     # Sidebar layout with input and output definitions ----
     sidebarLayout(
