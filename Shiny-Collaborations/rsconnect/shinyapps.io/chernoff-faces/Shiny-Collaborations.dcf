@@ -1,0 +1,13 @@
+name: Shiny-Collaborations
+title: Shiny-Collaborations
+username:
+account: chernoff-faces
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5830732
+bundleId: 5671000
+url: https://chernoff-faces.shinyapps.io/Shiny-Collaborations/
+when: 1646992132.39517
+lastSyncTime: 1646992132.39518
+asMultiple: FALSE
+asStatic: FALSE
