@@ -16,7 +16,7 @@ xseq<-seq(1,7,.01)
 densities <-dnorm(xseq, 4,1)
 
 # Authorize googlesheets4
-#gs4_auth(cache = ".secrets")
+gs4_auth(cache = ".secrets")
 
 dt <- readRDS("data/dt.rds")
 

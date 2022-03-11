@@ -71,12 +71,18 @@ ui <- fluidPage(
             ),
             
             # Main panel for displaying outputs ----
-            mainPanel(
+           
+             mainPanel(
+                tags$head(tags$style("#shiny-modal img { max-width: 100%; }")), #Zwingt Abbildung im Popup nicht größer das Popupfenster selbst zu sein
+                
                 
                 modalDialog(
-                    h3("The reference point for the following survey is the cluster level of the research collaboration DEKiF. The cluster level is understood as the level at which Principal Investigators, Postdoctoral researchers, Ph.D. students and
-Other employees work together across sub-projects to achieve the common cluster goals.  When answering the following questions, please think only of the collaboration at cluster level, not of the collaboration within the sub-projects of the above-mentioned research cluster."),
-                    title = "Note", 
+                    p("Note: The reference point for the following ten questions is the cluster level of the research collaboration DEKiF. In the following, the cluster level is understood as the level of research collaborations at which Principal Investigators, Postdoctoral researchers, Ph.D. students and Other employees work together across sub-projects to achieve the common goals of the collaboration.
+The following diagram schematically illustrates the relationship between the various status groups of collaborative members, sub-projects and the cluster level of a research cluster
+When answering the following questions, please consider only collaboration at the cluster level and not collaboration within the sub-projects."),
+                    title = "Welcome!", 
+                    HTML('<img src="https://i.ibb.co/C6bQF7C/clust-level.png">'),
+                    p("Have fun!"),
                     size = "m",
                     easyClose = T,
                     footer = modalButton("OK")
