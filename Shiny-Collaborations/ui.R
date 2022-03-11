@@ -25,9 +25,9 @@ ui <- fluidPage(
                             value = 3),
                 
                 # Input: Conscientiousness 1 ----
-                sliderInput("consc1", "I see myself as someone who is dependable, self-disciplined.",
-                            min = 1, max = 7,
-                            value = 1),
+                sliderInput("relation1", "There was fair interaction between the cluster members at cluster level.",
+                            min = 1, max = 5,
+                            value = 3),
                 
                 # Input: Neuroticism 1 ----
                 sliderInput("neur1", "I see myself as someone who is anxious, easily upset.",
@@ -51,9 +51,9 @@ ui <- fluidPage(
                             value = 3),
                 
                 # Input: Conscientiousness 2 ----
-                sliderInput("consc2", "I see myself as someone who is disorganized, careless",
-                            min = 1, max = 7,
-                            value = 1),
+                sliderInput("relation2", "The collaboration at cluster level was characterized by mutual trust.",
+                            min = 1, max = 5,
+                            value = 3),
                 
                 # Input: Neuroticissm 2 ----
                 sliderInput("neur2", "I see myself as someone who is calm, emotionally stable.",

@@ -33,19 +33,21 @@ server <- function(input, output, session) {
     sliderValues <- reactive({
         data.frame(
             Name = c("Openness",
-                     "Conscientiousness",
+                     "Relationship",
                      "Commitment",
-                     "Agreeableness",
+                     "Communication",
                      "Neuroticism"),
             Value = as.character(c((input$open1 + (8-input$open2))/2,
                                    
-                                   (input$consc1 + (8 - input$consc2))/2,
+                                   (input$relation1 + (input$relation2)),
                                    
                                    (input$commit1 + (input$commit2)),
                                    
                                    (input$commun2 + (input$commun1)),
                                    
                                    (input$neur1 + (8 - input$neur2))/2)),
+            Nightmare = c("1","1","1","1","1"),
+            Dream = c("10","10","10","10","10"),
             
             stringsAsFactors = FALSE)
         
@@ -79,17 +81,30 @@ server <- function(input, output, session) {
         output$le <- renderText({
             'Low: Commitment...'
         })
+        
+        
         output$pc <- renderPlot({
-            plot(xseq, densities, type = "l", lwd = 2, main = "Conscientiousness: \n How does your score compare to others?",  xlab = "Scores", yaxt='n', ylab = "")
-            abline(v=((input$consc1 + (8 - input$consc1))/2), col="blue")
-            text(((input$consc1 + (8 - input$consc1))/2), 0.1, "Your Score", col = "red") 
+            ggplot(dt, aes(x=relationship)) + 
+                geom_density(alpha=.2, fill="#5889c5", bw=0.5)+
+                geom_vline(xintercept = input$relation1+input$relation2, color="#000000")+ 
+                annotate("text", x = input$relation1+input$relation2, y = 0.1, label = "Your Score", 
+                         vjust = 1.5,angle = 90, color="#000000")+
+                theme(axis.text.y=element_blank(), 
+                      axis.title.y=element_blank(),
+                      axis.ticks.y = element_blank())+ ggtitle("Relationship: \n How does your score compare to others?")+theme(
+                          plot.title = element_text(color="black", size=14, face="bold"))+
+                theme(plot.title = element_text(hjust = 0.5))+
+                labs(x ="Scores")
         })
         output$hc <- renderText({
-            'High: People that have a high degree of conscientiousness are reliable and prompt. Traits include being organized, methodic, and thorough. A person scoring high in conscientiousness usually has a high level of self-discipline. These individuals prefer to follow a plan, rather than act spontaneously. Their methodic planning and perseverance usually makes them highly successful in their chosen occupation.'
+            'High: Relationship'
         })
         output$lc <- renderText({
-            'Low: People who score low on conscientiousness tend to be laid back, less goal-oriented, and less driven by success.'
+            'Low: Relationship'
         })
+        
+        
+        
         output$po <- renderPlot({
             plot(xseq, densities, type = "l", lwd = 2, main = "Openness to Experience: \n How does your score compare to others?",  xlab = "Scores", yaxt='n', ylab = "")
             abline(v=((input$open1 + (8-input$open2))/2), col="blue")
@@ -141,7 +156,7 @@ server <- function(input, output, session) {
     #store the results
     
     formData <- reactive(c(
-        input$open1, input$open2, input$consc1, input$consc2, input$commit1, input$commit2, input$commun1, input$commun2, input$neur1, input$neur2,input$commitment, Sys.time()
+        input$open1, input$open2, input$relation1, input$relation2, input$commit1, input$commit2, input$commun1, input$commun2, input$neur1, input$neur2,input$commitment, Sys.time()
     ))
     
     
@@ -161,7 +176,7 @@ server <- function(input, output, session) {
     })
     
     # Results <- reactive(c(
-    #   input$open1, input$open2, input$consc1, input$consc2, input$commit1, input$commit2, input$commun1, input$commun2, input$neur1, input$neur2,input$commitment, Sys.time()
+    #   input$open1, input$open2, input$relation1, input$relation2, input$commit1, input$commit2, input$commun1, input$commun2, input$neur1, input$neur2,input$commitment, Sys.time()
     # ))
     # 
     # 

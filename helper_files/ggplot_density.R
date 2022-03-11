@@ -7,9 +7,15 @@ densities <-dnorm(xseq, 4,1)
 
 library(readxl)
 dt <- read_excel("/Volumes/USB_MALTE/df_dekif.xlsx",
-                       na = c("-9995","-9990","-9991","-9992","-999", "-99")) %>% select(problm_1,problm_2,problm_5,problm_6) %>% na.omit() %>%
+                       na = c("-9995","-9990","-9991","-9992","-999", "-99")) %>% select(problm_1,problm_2, #commitment
+                                                                                         problm_5,problm_6, #communication
+                                                                                         problm_9, arbeit_vb_2) %>% 
+  
+  na.omit() %>%
   mutate(commitment=problm_1+problm_2)%>%
-  mutate(communication=problm_5+problm_6) %>% sample_n(150)
+  mutate(communication=problm_5+problm_6) %>%
+  mutate(relationship=problm_9+arbeit_vb_2)%>%
+  sample_n(150)
 
 saveRDS(dt,"/Users/maltehueckstaedt/Documents/Dokumente/GitHub/Shiny_DEKiF/Shiny-Collaborations/data/dt.rds")
 
