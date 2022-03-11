@@ -43,7 +43,7 @@ server <- function(input, output, session) {
                                    
                                    (input$commit1 + (input$commit2)),
                                    
-                                   (input$agree2 + (8 - input$agree1))/2,
+                                   (input$commun2 + (input$commun1)),
                                    
                                    (input$neur1 + (8 - input$neur2))/2)),
             
@@ -65,20 +65,19 @@ server <- function(input, output, session) {
                          vjust = 1.5,angle = 90, color="#000000")+
                 theme(axis.text.y=element_blank(), 
                       axis.title.y=element_blank(),
-                      axis.ticks.y = element_blank())
+                      axis.ticks.y = element_blank())+ ggtitle("Commitment: \n How does your score compare to others?")+theme(
+                          plot.title = element_text(color="black", size=14, face="bold"))+
+                theme(plot.title = element_text(hjust = 0.5))+
+                labs(x ="Scores")
         })
         
-        output$pe <- renderPlot({
-            plot(xseq, densities, type = "l", lwd = 2, main = "Extraversion: \n How does your score compare to others?",  xlab = "Scores", yaxt='n', ylab = "")
-            abline(v=((input$commit1 + (input$commit2))), col="blue")
-            text(((input$commit1 + (input$commit2))), 0.1, "Your Score", col = "red") 
-        })
+
         output$he <- renderText({
-            'High: Extraverts get their energy from interacting with others, while introverts get their energy from within themselves. Extraversion includes the traits of energetic, talkative, and assertive. They enjoy being with people, participating in social gatherings, and are full of energy.'
+            'High: Commitment...'
         })
         
         output$le <- renderText({
-            'Low: A person low in extraversion is less outgoing and is more comfortable working by himself.'
+            'Low: Commitment...'
         })
         output$pc <- renderPlot({
             plot(xseq, densities, type = "l", lwd = 2, main = "Conscientiousness: \n How does your score compare to others?",  xlab = "Scores", yaxt='n', ylab = "")
@@ -103,17 +102,29 @@ server <- function(input, output, session) {
         output$lo <- renderText({
             'Low: People who score low on openness tend to be conventional and traditional in their outlook and behavior. They prefer familiar routines to new experiences, and generally have a narrower range of interests.'
         })
-        output$pa <- renderPlot({
-            plot(xseq, densities, type = "l", lwd = 2, main = "Agreeableness: \n How does your score compare to others?",  xlab = "Scores", yaxt='n', ylab = "")
-            abline(v=((input$agree2 + (8 - input$agree1))/2), col="blue")
-            text(((input$agree2 + (8 - input$agree1))/2), 0.1, "Your Score", col = "red") 
-        })
-        output$ha <- renderText({
-            'High: A person with a high level of agreeableness in a personality test is usually warm, friendly, and tactful. They generally have an optimistic view of human nature and get along well with others.'
+        
+        
+        
+        output$commu <- renderPlot({
+            ggplot(dt, aes(x=communication)) + 
+                geom_density(alpha=.2, fill="#5889c5", bw=0.5)+
+                geom_vline(xintercept = input$commun1+input$commun2, color="#000000")+ 
+                annotate("text", x = input$commun1+input$commun2, y = 0.1, label = "Your Score", 
+                         vjust = 1.5,angle = 90, color="#000000")+
+                theme(axis.text.y=element_blank(), 
+                      axis.title.y=element_blank(),
+                      axis.ticks.y = element_blank())+ ggtitle("Communication: \n How does your score compare to others?")+theme(
+                          plot.title = element_text(color="black", size=14, face="bold"))+
+                theme(plot.title = element_text(hjust = 0.5))+
+                labs(x ="Scores")
         })
         
+        output$ha <- renderText({
+            'High: Communication'
+        })
+   
         output$la <- renderText({
-            'Low: People with low agreeableness may be more distant and may put their own interests above those of others. They tend to be less cooperative. '
+            'Low: Communication'
         })
         output$pn <- renderPlot({
             plot(xseq, densities, type = "l", lwd = 2, main = "Neuroticism: \n How does your score compare to others?",  xlab = "Scores", yaxt='n', ylab = "")
@@ -130,7 +141,7 @@ server <- function(input, output, session) {
     #store the results
     
     formData <- reactive(c(
-        input$open1, input$open2, input$consc1, input$consc2, input$commit1, input$commit2, input$agree1, input$agree2, input$neur1, input$neur2,input$commitment, Sys.time()
+        input$open1, input$open2, input$consc1, input$consc2, input$commit1, input$commit2, input$commun1, input$commun2, input$neur1, input$neur2,input$commitment, Sys.time()
     ))
     
     
@@ -150,7 +161,7 @@ server <- function(input, output, session) {
     })
     
     # Results <- reactive(c(
-    #   input$open1, input$open2, input$consc1, input$consc2, input$commit1, input$commit2, input$agree1, input$agree2, input$neur1, input$neur2,input$commitment, Sys.time()
+    #   input$open1, input$open2, input$consc1, input$consc2, input$commit1, input$commit2, input$commun1, input$commun2, input$neur1, input$neur2,input$commitment, Sys.time()
     # ))
     # 
     # 

@@ -5,7 +5,7 @@ ui <- fluidPage(
     ui <- fluidPage(
         #table <- "responses", 
         # App title ----
-        titlePanel("Locate your research cluster!"),
+        titlePanel("Locate your cluster!"),
         
         # Sidebar layout with input and output definitions ----
         sidebarLayout(
@@ -20,9 +20,9 @@ ui <- fluidPage(
                             value = 3),
                 
                 # Input: Agreeableness ----
-                sliderInput("agree1", "I see myself as someone who is critical, quarrelsome.",
-                            min = 1, max = 7,
-                            value = 1),
+                sliderInput("commun1", "The communication at cluster level was comprehensive.",
+                            min = 1, max = 5,
+                            value = 3),
                 
                 # Input: Conscientiousness 1 ----
                 sliderInput("consc1", "I see myself as someone who is dependable, self-disciplined.",
@@ -46,9 +46,9 @@ ui <- fluidPage(
                             value = 3),
                 
                 # Input: Agreeable 2 ----
-                sliderInput("agree2", "I see myself as someone who is sympathetic, warm.",
-                            min = 1, max = 7,
-                            value = 1),
+                sliderInput("commun2", " The cluster members participated actively in communication within the cluster.",
+                            min = 1, max = 5,
+                            value = 3),
                 
                 # Input: Conscientiousness 2 ----
                 sliderInput("consc2", "I see myself as someone who is disorganized, careless",
@@ -66,7 +66,7 @@ ui <- fluidPage(
                             value = 1),
                 
                 # Input: Commitment ----
-                sliderInput("commitment", "I see mysfd uncreative.",
+                sliderInput("commit3", "The cluster members were committed to the common objectives of the cluster.",
                             min = 1, max = 7,
                             value = 1),
                 
@@ -80,7 +80,6 @@ ui <- fluidPage(
                 # Output: Table summarizing the values entered ----
                 tableOutput("values"),
                 plotOutput("com"),
-                plotOutput("pe"),
                 textOutput("he"),
                 textOutput("le"),
                 plotOutput("pc"),
@@ -89,7 +88,7 @@ ui <- fluidPage(
                 plotOutput("po"),
                 textOutput("ho"),
                 textOutput("lo"),
-                plotOutput("pa"),
+                plotOutput("commu"),
                 textOutput("ha"),
                 textOutput("la"),
                 plotOutput("pn"),
