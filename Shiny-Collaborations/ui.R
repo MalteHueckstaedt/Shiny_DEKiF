@@ -30,15 +30,15 @@ ui <- fluidPage(
                             value = 3),
                 
                 # Input: Neuroticism 1 ----
-                sliderInput("neur1", "I see myself as someone who is anxious, easily upset.",
-                            min = 1, max = 7,
-                            value = 1),
+                sliderInput("fair1", "The costs and benefits of cluster work were shared fairly between the members.",
+                            min = 1, max = 5,
+                            value = 3),
                 
                 
                 # Input: Openess 1 ----
-                sliderInput("open1", "I see myself as someone who is open to new experiences, complex.",
-                            min = 1, max = 7,
-                            value = 1),
+                sliderInput("diff1", "The cluster members were willing to see different points of view.",
+                            min = 1, max = 5,
+                            value = 3),
                 
                 # Input: Extraversion 2 ----
                 sliderInput("commit2", "The cluster members collaborated towards the achievement of the common research objectives, also beyond the boundaries of sub-projects.",
@@ -56,19 +56,15 @@ ui <- fluidPage(
                             value = 3),
                 
                 # Input: Neuroticissm 2 ----
-                sliderInput("neur2", "I see myself as someone who is calm, emotionally stable.",
-                            min = 1, max = 7,
-                            value = 1),
+                sliderInput("fair2", "The contributions made by the cluster members towards the achievement of the common research objectives were appropriately recognized at the cluster level.",
+                            min = 1, max = 5,
+                            value = 3),
                 
                 # Input: Openess 2 ----
-                sliderInput("open2", "I see myself as someone who is conventional, uncreative.",
-                            min = 1, max = 7,
-                            value = 1),
+                sliderInput("diff2", "The cluster members made their own viewpoint understandable to the other cluster members.",
+                            min = 1, max = 5,
+                            value = 3),
                 
-                # Input: Commitment ----
-                sliderInput("commit3", "The cluster members were committed to the common objectives of the cluster.",
-                            min = 1, max = 7,
-                            value = 1),
                 
                 actionButton("submit", "Submit")
                 
@@ -85,13 +81,13 @@ ui <- fluidPage(
                 plotOutput("pc"),
                 textOutput("hc"),
                 textOutput("lc"),
-                plotOutput("po"),
+                plotOutput("diff"),
                 textOutput("ho"),
                 textOutput("lo"),
                 plotOutput("commu"),
                 textOutput("ha"),
                 textOutput("la"),
-                plotOutput("pn"),
+                plotOutput("fair"),
                 textOutput("hn"),
                 textOutput("ln")
             ))

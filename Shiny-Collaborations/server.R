@@ -32,12 +32,12 @@ server <- function(input, output, session) {
     # Reactive expression to create data frame of all input values ----
     sliderValues <- reactive({
         data.frame(
-            Name = c("Openness",
+            dimension = c("Difference",
                      "Relationship",
                      "Commitment",
                      "Communication",
-                     "Neuroticism"),
-            Value = as.character(c((input$open1 + (8-input$open2))/2,
+                     "Fairness"),
+            "your value" = as.character(c((input$diff1 + (input$diff2)),
                                    
                                    (input$relation1 + (input$relation2)),
                                    
@@ -45,11 +45,12 @@ server <- function(input, output, session) {
                                    
                                    (input$commun2 + (input$commun1)),
                                    
-                                   (input$neur1 + (8 - input$neur2))/2)),
-            Nightmare = c("1","1","1","1","1"),
-            Dream = c("10","10","10","10","10"),
+                                   (input$fair1 + (input$fair2)))),
+            "nightmare score" = c("2","2","2","2","2"),
+            "dream score" = c("10","10","10","10","10"),
             
-            stringsAsFactors = FALSE)
+            stringsAsFactors = FALSE,
+            check.names = FALSE)
         
         
     })
@@ -70,7 +71,7 @@ server <- function(input, output, session) {
                       axis.ticks.y = element_blank())+ ggtitle("Commitment: \n How does your score compare to others?")+theme(
                           plot.title = element_text(color="black", size=14, face="bold"))+
                 theme(plot.title = element_text(hjust = 0.5))+
-                labs(x ="Scores")
+                labs(x ="Scores")+xlim(2, 10)
         })
         
 
@@ -94,7 +95,7 @@ server <- function(input, output, session) {
                       axis.ticks.y = element_blank())+ ggtitle("Relationship: \n How does your score compare to others?")+theme(
                           plot.title = element_text(color="black", size=14, face="bold"))+
                 theme(plot.title = element_text(hjust = 0.5))+
-                labs(x ="Scores")
+                labs(x ="Scores")+xlim(2, 10)
         })
         output$hc <- renderText({
             'High: Relationship'
@@ -105,17 +106,25 @@ server <- function(input, output, session) {
         
         
         
-        output$po <- renderPlot({
-            plot(xseq, densities, type = "l", lwd = 2, main = "Openness to Experience: \n How does your score compare to others?",  xlab = "Scores", yaxt='n', ylab = "")
-            abline(v=((input$open1 + (8-input$open2))/2), col="blue")
-            text(((input$open1 + (8-input$open2))/2), 0.1, "Your Score", col = "red") 
+        output$diff <- renderPlot({
+            ggplot(dt, aes(x=difference)) + 
+                geom_density(alpha=.2, fill="#5889c5", bw=0.5)+
+                geom_vline(xintercept = input$diff1+input$diff2, color="#000000")+ 
+                annotate("text", x = input$diff1+input$diff2, y = 0.1, label = "Your Score", 
+                         vjust = 1.5,angle = 90, color="#000000")+
+                theme(axis.text.y=element_blank(), 
+                      axis.title.y=element_blank(),
+                      axis.ticks.y = element_blank())+ ggtitle("Difference: \n How does your score compare to others?")+theme(
+                          plot.title = element_text(color="black", size=14, face="bold"))+
+                theme(plot.title = element_text(hjust = 0.5))+
+                labs(x ="Scores")
         })
         output$ho <- renderText({
-            'High: People who like to learn new things and enjoy new experiences usually score high in openness. Openness includes traits like being insightful and imaginative and having a wide variety of interests.'
+            'High: Difference Problem'
         })
         
         output$lo <- renderText({
-            'Low: People who score low on openness tend to be conventional and traditional in their outlook and behavior. They prefer familiar routines to new experiences, and generally have a narrower range of interests.'
+            'Low: Difference Problem'
         })
         
         
@@ -141,22 +150,32 @@ server <- function(input, output, session) {
         output$la <- renderText({
             'Low: Communication'
         })
-        output$pn <- renderPlot({
-            plot(xseq, densities, type = "l", lwd = 2, main = "Neuroticism: \n How does your score compare to others?",  xlab = "Scores", yaxt='n', ylab = "")
-            abline(v=((input$neur1 + (8 - input$neur2))/2), col="blue")
-            text(( (input$neur1 + (8 - input$neur2))/2), 0.1, "Your Score", col = "red") 
+        
+        
+        output$fair <- renderPlot({
+            ggplot(dt, aes(x=fairness)) + 
+                geom_density(alpha=.2, fill="#5889c5", bw=0.5)+
+                geom_vline(xintercept = input$fair1+input$fair2, color="#000000")+ 
+                annotate("text", x = input$fair1+input$fair2, y = 0.1, label = "Your Score", 
+                         vjust = 1.5,angle = 90, color="#000000")+
+                theme(axis.text.y=element_blank(), 
+                      axis.title.y=element_blank(),
+                      axis.ticks.y = element_blank())+ ggtitle("Fairness: \n How does your score compare to others?")+theme(
+                          plot.title = element_text(color="black", size=14, face="bold"))+
+                theme(plot.title = element_text(hjust = 0.5))+
+                labs(x ="Scores")+xlim(2, 10)
         })
         output$hn <- renderText({
-            'High: This dimension relates to one’s emotional stability and degree of negative emotions. People that score high on neuroticism often experience emotional instability and negative emotions. Traits include being moody and tense. A person who is high in neuroticism has a tendency to easily experience negative emotions.'
+            'High: Fairness'
         })
         output$ln <- renderText({
-            "Low: On the other end of the section, people who score low in neuroticism experience more emotional stability. Emotional stability refers to a person's ability to remain stable and balanced. They tend to experience negative emotions less easily and handle stress well."
+            "Low: Fairness"
         })
     })
     #store the results
     
     formData <- reactive(c(
-        input$open1, input$open2, input$relation1, input$relation2, input$commit1, input$commit2, input$commun1, input$commun2, input$neur1, input$neur2,input$commitment, Sys.time()
+        input$diff1, input$diff2, input$relation1, input$relation2, input$commit1, input$commit2, input$commun1, input$commun2, input$fair1, input$fair2,input$commitment, Sys.time()
     ))
     
     
@@ -164,8 +183,8 @@ server <- function(input, output, session) {
     to_be_done_at_submit <- observeEvent(input$submit, {
         #Collect data
         dtData <- data.table(
-            open1 <- input$open1,
-            open2 <- input$open2
+            diff1 <- input$diff1,
+            diff2 <- input$diff2
         )
         
         #Put data on drive
@@ -176,7 +195,7 @@ server <- function(input, output, session) {
     })
     
     # Results <- reactive(c(
-    #   input$open1, input$open2, input$relation1, input$relation2, input$commit1, input$commit2, input$commun1, input$commun2, input$neur1, input$neur2,input$commitment, Sys.time()
+    #   input$diff1, input$diff2, input$relation1, input$relation2, input$commit1, input$commit2, input$commun1, input$commun2, input$fair1, input$fair2,input$commitment, Sys.time()
     # ))
     # 
     # 
