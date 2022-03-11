@@ -16,7 +16,7 @@ xseq<-seq(1,7,.01)
 densities <-dnorm(xseq, 4,1)
 
 # Authorize googlesheets4
-gs4_auth(cache = ".secrets")
+#gs4_auth(cache = ".secrets")
 
 dt <- readRDS("data/dt.rds")
 
@@ -117,7 +117,7 @@ server <- function(input, output, session) {
                       axis.ticks.y = element_blank())+ ggtitle("Difference: \n How does your score compare to others?")+theme(
                           plot.title = element_text(color="black", size=14, face="bold"))+
                 theme(plot.title = element_text(hjust = 0.5))+
-                labs(x ="Scores")
+                labs(x ="Scores")+xlim(2, 10)
         })
         output$ho <- renderText({
             'High: Difference Problem'

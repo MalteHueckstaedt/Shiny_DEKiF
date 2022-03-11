@@ -73,6 +73,16 @@ ui <- fluidPage(
             # Main panel for displaying outputs ----
             mainPanel(
                 
+                modalDialog(
+                    h3("The reference point for the following survey is the cluster level of the research collaboration DEKiF. The cluster level is understood as the level at which Principal Investigators, Postdoctoral researchers, Ph.D. students and
+Other employees work together across sub-projects to achieve the common cluster goals.  When answering the following questions, please think only of the collaboration at cluster level, not of the collaboration within the sub-projects of the above-mentioned research cluster."),
+                    title = "Note", 
+                    size = "m",
+                    easyClose = T,
+                    footer = modalButton("OK")
+                ),
+                
+                
                 # Output: Table summarizing the values entered ----
                 tableOutput("values"),
                 plotOutput("com"),
