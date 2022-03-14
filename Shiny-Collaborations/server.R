@@ -37,7 +37,7 @@ server <- function(input, output, session) {
                      "Commitment",
                      "Communication",
                      "Fairness"),
-            "your value" = as.character(c((input$diff1 + (input$diff2)),
+            "your score" = as.character(c((input$diff1 + (input$diff2)),
                                    
                                    (input$relation1 + (input$relation2)),
                                    
@@ -76,11 +76,11 @@ server <- function(input, output, session) {
         
 
         output$he <- renderText({
-            'High: Commitment...'
+            'High: Die PIs fühlen sich den Zielen des Clusters verbunden und arbeiten für die Ereichung teilprojektübergreifend zusammen. Sie engagieren sich zuverlässig auf der Cluster Ebene und tun alles, im ihre Beiträge zuverlässig zu liefern'
         })
         
         output$le <- renderText({
-            'Low: Commitment...'
+            'Low: Die PIs fühlen sich den Zielen ihrer Teilprojekte mehr verpflichtet als denen des Cluster und vermeiden die teilprojektübergreifende Zusammenarbeit'
         })
         
         
@@ -98,10 +98,10 @@ server <- function(input, output, session) {
                 labs(x ="Scores")+xlim(2, 10)
         })
         output$hc <- renderText({
-            'High: Relationship'
+            'High: Die Zusammenarbeit auf der Clusterebene ist durch eine Wir-Gefühl und wechselseitiges Vertrauen geprägt'
         })
         output$lc <- renderText({
-            'Low: Relationship'
+            'Low: Das Cluster ist eine lose Koaliation von Teilprojekten, deren PIs sich weder durch ein Wir-Gefühl verbunden fühlen noch sich ein wechselseitges Vertrauen aufbauen konnten'
         })
         
         
@@ -120,11 +120,11 @@ server <- function(input, output, session) {
                 labs(x ="Scores")+xlim(2, 10)
         })
         output$ho <- renderText({
-            'High: Difference Problem'
+            'High: Die PIs des Cluster sind in der Lage, fachliche Differenzen zu überbrücken und sich wechseleitig (ggf. auch disziplinübergreifend) zu verständigen'
         })
         
         output$lo <- renderText({
-            'Low: Difference Problem'
+            'Low: Die PIs des Cluster sind nicht in der Lage, sich wechselseitg zu verständigen und so (disziplinäre) Differenzen zu überbrücken'
         })
         
         
@@ -144,11 +144,11 @@ server <- function(input, output, session) {
         })
         
         output$ha <- renderText({
-            'High: Communication'
+            'High: An der Kommunikation auf der Verundebene beteiligen sich alle PIs erschöpfend. Die Informationszirkulation erfolgt umfassend'
         })
    
         output$la <- renderText({
-            'Low: Communication'
+            'Low: An der Kommunikation auf der Verundebene beteiligen sich nicht alle PIs in erschöpfendder Weise. Die Informationszirkulation gerät in der Folge ins stocken'
         })
         
         
@@ -166,10 +166,10 @@ server <- function(input, output, session) {
                 labs(x ="Scores")+xlim(2, 10)
         })
         output$hn <- renderText({
-            'High: Fairness'
+            'High: Aufwand und Ertrag der der Kooperation auf der Verbundeben sind reziprok. Die von den PIs geleisteten Beiträge werden angemessen honoriert'
         })
         output$ln <- renderText({
-            "Low: Fairness"
+            "Low: Aufwand und Ertrag der Koopertation auf der Verbundebene sind unfair verteilt. Die Beiträge, die die PIs zur Erreichung der gemeinsamen Ziele besteuern, werden nicht angemessen anerkannt"
         })
     })
     #store the results

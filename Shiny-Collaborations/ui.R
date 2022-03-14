@@ -81,7 +81,7 @@ ui <- fluidPage(
 The following diagram schematically illustrates the relationship between the various status groups of collaborative members, sub-projects and the cluster level of a research cluster
 When answering the following questions, please consider only collaboration at the cluster level and not collaboration within the sub-projects."),
                     title = "Welcome!", 
-                    HTML('<img src="https://i.ibb.co/C6bQF7C/clust-level.png">'),
+                    HTML('<img src="https://i.ibb.co/56338VY/clust-level.png">'),
                     p("Have fun!"),
                     size = "m",
                     easyClose = T,
