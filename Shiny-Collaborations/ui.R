@@ -29,7 +29,7 @@ ui <- fluidPage(
                             min = 1, max = 5,
                             value = 3),
                 
-                # Input: Neuroticism 1 ----
+                # Input: fair1  ----
                 sliderInput("fair1", "The costs and benefits of cluster work were shared fairly between the members.",
                             min = 1, max = 5,
                             value = 3),

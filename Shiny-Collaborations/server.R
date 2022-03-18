@@ -183,8 +183,18 @@ server <- function(input, output, session) {
     to_be_done_at_submit <- observeEvent(input$submit, {
         #Collect data
         dtData <- data.table(
-            diff1 <- input$diff1,
-            diff2 <- input$diff2
+          commit1 <- input$commit1,
+          commun1 <- input$commun1,
+          relation1 <- input$relation1,
+          
+          fair1 <- input$fair1,
+          diff1 <- input$diff1,
+          commit2 <- input$commit2,
+          
+          commun2 <- input$commun2,
+          relation2 <- input$relation2,
+          fair2 <- input$fair2,
+          diff2 <- input$diff2
         )
         
         #Put data on drive
