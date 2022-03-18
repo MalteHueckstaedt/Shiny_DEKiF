@@ -5,9 +5,9 @@ account: chernoff-faces
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 5830732
-bundleId: 5683615
+bundleId: 5698779
 url: https://chernoff-faces.shinyapps.io/Shiny-Collaborations/
-when: 1647289226.36804
-lastSyncTime: 1647289226.36806
+when: 1647598543.57536
+lastSyncTime: 1647598543.57537
 asMultiple: FALSE
 asStatic: FALSE

@@ -77,8 +77,8 @@ ui <- fluidPage(
                 
                 
                 modalDialog(
-                    p("Note: The reference point for the following ten questions is the cluster level of the research collaboration DEKiF. In the following, the cluster level is understood as the level of research collaborations at which Principal Investigators, Postdoctoral researchers, Ph.D. students and Other employees work together across sub-projects to achieve the common goals of the collaboration.
-The following diagram schematically illustrates the relationship between the various status groups of collaborative members, sub-projects and the cluster level of a research cluster
+                    p("Note: The reference point for the following ten questions is the cluster level of the research collaboration DEKiF. In the following, the cluster level is understood as the level of research collaborations at which Principal Investigators, Postdoctoral Researchers, Ph.D. students and other employees work together across sub-projects to achieve the common goals of the collaboration.
+The following diagram schematically illustrates the relationship between the various status groups of collaborative members, sub-projects and the cluster level of a research cluster.
 When answering the following questions, please consider only collaboration at the cluster level and not collaboration within the sub-projects."),
                     title = "Welcome!", 
                     HTML('<img src="https://i.ibb.co/56338VY/clust-level.png">'),

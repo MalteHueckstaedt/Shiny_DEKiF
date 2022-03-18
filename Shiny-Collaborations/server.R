@@ -76,11 +76,13 @@ server <- function(input, output, session) {
         
 
         output$he <- renderText({
-            'High: Die PIs fühlen sich den Zielen des Clusters verbunden und arbeiten für die Ereichung teilprojektübergreifend zusammen. Sie engagieren sich zuverlässig auf der Cluster Ebene und tun alles, im ihre Beiträge zuverlässig zu liefern'
+            'High: The PIs are committed to the goals of the cluster and work together across sub-projects to achieve them. They are reliably engaged at the cluster level and do their best to reliably deliver their contributions.'
         })
         
         output$le <- renderText({
-            'Low: Die PIs fühlen sich den Zielen ihrer Teilprojekte mehr verpflichtet als denen des Cluster und vermeiden die teilprojektübergreifende Zusammenarbeit'
+            'Low: PIs feel more committed to the goals of their sub-projects than to those of the cluster and avoid cross-sub-project cooperation.
+          
+          '
         })
         
         
@@ -98,10 +100,10 @@ server <- function(input, output, session) {
                 labs(x ="Scores")+xlim(2, 10)
         })
         output$hc <- renderText({
-            'High: Die Zusammenarbeit auf der Clusterebene ist durch eine Wir-Gefühl und wechselseitiges Vertrauen geprägt'
+            'High: The collaboration at the cluster level is characterised by a group feeling and mutual trust.'
         })
         output$lc <- renderText({
-            'Low: Das Cluster ist eine lose Koaliation von Teilprojekten, deren PIs sich weder durch ein Wir-Gefühl verbunden fühlen noch sich ein wechselseitges Vertrauen aufbauen konnten'
+            'Low: The cluster is a loose coalition of sub-projects whose PIs neither feel connected by a group feeling nor have been able to build up mutual trust.'
         })
         
         
@@ -120,11 +122,11 @@ server <- function(input, output, session) {
                 labs(x ="Scores")+xlim(2, 10)
         })
         output$ho <- renderText({
-            'High: Die PIs des Cluster sind in der Lage, fachliche Differenzen zu überbrücken und sich wechseleitig (ggf. auch disziplinübergreifend) zu verständigen'
+            'High: The PIs of the cluster are able to overcome (disciplinary) differences and to communicate with each other.'
         })
         
         output$lo <- renderText({
-            'Low: Die PIs des Cluster sind nicht in der Lage, sich wechselseitg zu verständigen und so (disziplinäre) Differenzen zu überbrücken'
+            'Low: The PIs of the cluster are not able to communicate with each other and thus overcome (disciplinary) differences.'
         })
         
         
@@ -144,11 +146,11 @@ server <- function(input, output, session) {
         })
         
         output$ha <- renderText({
-            'High: An der Kommunikation auf der Verundebene beteiligen sich alle PIs erschöpfend. Die Informationszirkulation erfolgt umfassend'
+            'High: All PIs participate exhaustively in communication at the cluster level. The circulation of information is comprehensive.'
         })
    
         output$la <- renderText({
-            'Low: An der Kommunikation auf der Verundebene beteiligen sich nicht alle PIs in erschöpfendder Weise. Die Informationszirkulation gerät in der Folge ins stocken'
+            'Low: The participation of PIs in communication at the cluster level is fragmentary and the circulation of information cannot be adequately ensured.'
         })
         
         
@@ -166,10 +168,10 @@ server <- function(input, output, session) {
                 labs(x ="Scores")+xlim(2, 10)
         })
         output$hn <- renderText({
-            'High: Aufwand und Ertrag der der Kooperation auf der Verbundeben sind reziprok. Die von den PIs geleisteten Beiträge werden angemessen honoriert'
+            'High: Effort and income gained by the collaboration at the cluster level are balanced. The contributions made by the PIs are appropriately rewarded.'
         })
         output$ln <- renderText({
-            "Low: Aufwand und Ertrag der Koopertation auf der Verbundebene sind unfair verteilt. Die Beiträge, die die PIs zur Erreichung der gemeinsamen Ziele besteuern, werden nicht angemessen anerkannt"
+            "Low: Effort and return of collaboration at the cluster level are unfairly distributed. The contributions that PIs make to achieve the common goals are not adequately recognised."
         })
     })
     #store the results
