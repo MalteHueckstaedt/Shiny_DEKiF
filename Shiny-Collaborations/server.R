@@ -16,6 +16,7 @@ xseq<-seq(1,7,.01)
 densities <-dnorm(xseq, 4,1)
 
 # Authorize googlesheets4
+options(gargle_oauth_cache = ".secrets")
 gs4_auth(cache = ".secrets")
 
 dt <- readRDS("data/dt.rds")
@@ -216,10 +217,10 @@ server <- function(input, output, session) {
     # observeEvent(input$submit, {
     #   MySheet <-   gs4_get('https://docs.google.com/spreadsheets/d/1Glv5vjkB1VipxVxeyOsVzIHj9RO_K7arpqIJ7CddORA/edit#gid=760098930')
     #   sheet_append(MySheet , data = as.data.frame(t(Results())))
-    #   # Data  <- Data  %>%
-    #   #   sheet_append(ss = "1yrJGzVmumFqJDbIjqXzgo9rnDPMx7aE2uqc5lVGkDn0",
-    #   #              data = Results,
-    #   #              sheet=1)
+    #   Data  <- Data  %>%
+    #     sheet_append(ss = "1yrJGzVmumFqJDbIjqXzgo9rnDPMx7aE2uqc5lVGkDn0",
+    #                data = Results,
+    #                sheet=1)
     # }
     # )
     
