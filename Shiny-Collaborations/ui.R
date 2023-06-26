@@ -66,9 +66,17 @@ ui <- fluidPage(
                             value = 3),
                 
                 
-                actionButton("submit", "Submit")
+                actionButton("submit", "Submit"),
+                
+                tags$div(style = "margin-bottom: 20px;"),
+                
+                
+                p("Should you encounter any problems, dysfunctions, or bugs, please report them", 
+                  tags$a(href = "https://github.com/maltehueckstaedt/Shiny_DEKiF/issues", "here"), "."),
                 
             ),
+            
+            
             
             # Main panel for displaying outputs ----
            
@@ -77,11 +85,15 @@ ui <- fluidPage(
                 
                 
                 modalDialog(
-                    p("Note: The reference point for the following ten questions is the cluster level of the research collaboration DEKiF. In the following, the cluster level is understood as the level of research collaborations at which Principal Investigators, Postdoctoral Researchers, Ph.D. students and other employees work together across sub-projects to achieve the common goals of the collaboration.
-The following diagram schematically illustrates the relationship between the various status groups of collaborative members, sub-projects and the cluster level of a research cluster.
-When answering the following questions, please consider only collaboration at the cluster level and not collaboration within the sub-projects."),
-                    title = "Welcome!", 
-                    HTML('<img src="https://i.ibb.co/56338VY/clust-level.png">'),
+                  title = tags$h1(
+                    style = "display: flex; align-items: center; justify-content: space-between;",
+                    "Welcome!", HTML('<img src="https://i.ibb.co/bgXRLfj/logo-dekif.png" alt="Logo" style="height: 100px; margin-right: 10px;">')), 
+                  
+                  p("With the ShinyApp \"Locate Your Cluster\" you can assess the functionality of your research collaboration across five dimensions (Difference, Relationship, Commitment, Communication, Fairness) and compare your team with other research clusters. The reference point for your data is the information provided by approximately 5000 PIs and spokespersons of DFG research collaborations. Enjoy!"),
+                  p("Should you encounter any problems, dysfunctions, or bugs, please report them", 
+                    tags$a(href = "https://github.com/maltehueckstaedt/Shiny_DEKiF/issues", "here"), "."),
+                  
+                  
                     p("Have fun!"),
                     size = "m",
                     easyClose = T,
